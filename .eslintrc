@@ -25,3 +25,6 @@ rules:
         - 1
         - 10
         - 100
+  quotes:
+    - error
+    - double

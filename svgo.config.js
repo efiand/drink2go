@@ -5,26 +5,21 @@ const params = {
 export default {
   plugins: [
     ...[
-      'removeDoctype',
-      'removeXMLProcInst',
-      'removeEditorsNSData',
-      'removeMetadata',
-      'removeComments',
-      'removeViewBox',
-      'removeDesc',
-      'removeTitle',
-      'removeUselessDefs',
-      'removeEmptyAttrs'
+      "removeDoctype",
+      "removeXMLProcInst",
+      "removeEditorsNSData",
+      "removeMetadata",
+      "removeComments",
+      "removeViewBox",
+      "removeDesc",
+      "removeTitle",
+      "removeUselessDefs",
+      "removeEmptyAttrs"
     ].map((name) => ({
       active: true,
       name
     })),
-    ...[
-      'cleanupNumericValues',
-      'convertPathData',
-      'convertTransform',
-      'cleanupListOfValues'
-    ].map((name) => ({
+    ...["cleanupNumericValues", "convertPathData", "convertTransform", "cleanupListOfValues"].map((name) => ({
       active: true,
       name,
       params

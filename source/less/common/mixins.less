@@ -1,0 +1,79 @@
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
+}
+
+.button() {
+  box-sizing: border-box;
+  padding: 8px 20px;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-primary-lighter);
+  }
+
+  &:active {
+    background-color: var(--color-primary-darker);
+  }
+
+  &:disabled {
+    background-color: var(--color-base-grey);
+  }
+}
+
+.button-primary() {
+  .button();
+
+  color: var(--color-base-white);
+  background-color: var(--color-base-primary);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-primary-lighter);
+  }
+
+  &:active {
+    background-color: var(--color-primary-darker);
+  }
+
+  &:disabled {
+    background-color: var(--color-base-grey);
+  }
+}
+
+.button-secondary() {
+  .button();
+
+  color: var(--color-base-primary);
+  background-color: var(--color-base-white);
+
+  &:hover,
+  &:focus {
+    color: var(--color-base-white);
+    background-color: var(--color-primary-lighter);
+  }
+
+  &:active {
+    color: var(--color-base-white);
+    background-color: var(--color-primary-darker);
+  }
+
+  &:disabled {
+    color: var(--color-base-white);
+    background-color: var(--color-light-grey);
+  }
+}
+
+.control-text() {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: inherit;
+  text-transform: uppercase;
+  text-decoration: none;
+}
