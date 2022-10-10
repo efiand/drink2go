@@ -92,7 +92,14 @@
   letter-spacing: 0.02em;
   background-color: transparent;
   border: none;
-  cursor: pointer;
+
+  &:not([aria-current="page"]) {
+    cursor: pointer;
+
+    &:active {
+      background-color: var(--color-base-secondary);
+    }
+  }
 
   &::before {
     width: 16px;
@@ -106,6 +113,12 @@
     &[aria-current="page"] {
       color: var(--color-base-primary);
       border-bottom: 2px solid;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-base-primary);
     }
   }
 
