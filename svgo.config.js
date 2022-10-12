@@ -1,8 +1,5 @@
-const params = {
-  floatPrecision: 2
-};
-
 export default {
+  multipass: true,
   plugins: [
     ...[
       "removeDoctype",
@@ -10,11 +7,11 @@ export default {
       "removeEditorsNSData",
       "removeMetadata",
       "removeComments",
-      "removeViewBox",
       "removeDesc",
       "removeTitle",
       "removeUselessDefs",
-      "removeEmptyAttrs"
+      "removeEmptyAttrs",
+      "cleanupIDs"
     ].map((name) => ({
       active: true,
       name
@@ -22,7 +19,9 @@ export default {
     ...["cleanupNumericValues", "convertPathData", "convertTransform", "cleanupListOfValues"].map((name) => ({
       active: true,
       name,
-      params
+      params: {
+        floatPrecision: 2
+      }
     }))
   ]
 };

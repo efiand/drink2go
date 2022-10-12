@@ -1,28 +1,39 @@
 <section class="promo">
   <h2 class="visually-hidden">Новинки.</h2>
 
-  <div class="promo__slider">
-    <ul class="promo__list">
-      {% for good in data.promo %}
-        <li class="promo__card" style="--color: var(--color-{{ good.id }})">
-          <picture>
-            <source type="image/webp" srcset="img/promo-{{ loop.index }}.webp">
-            <img class="promo__image" src="img/promo-{{ loop.index }}.png" alt="Изображение товара «{{ good.title }}».">
-          </picture>
+  <div class="slider">
+    <div class="slider__body">
+      <ul class="slider__list">
+        {% for good in data.promo %}
+          <li class="slider__item promo__card" style="--color: var(--color-{{ good.id }})">
+            <picture>
+              <source type="image/webp" srcset="img/promo-{{ loop.index }}.webp">
+              <img class="promo__image" src="img/promo-{{ loop.index }}.png" alt="Изображение товара «{{ good.title }}».">
+            </picture>
 
-          <div class="promo__content">
-            <h3 class="promo__title">{{ good.title }}</h3>
-            <p class="promo__text">{{ good.text }}</p>
+            <div class="promo__content">
+              <h3 class="promo__title">{{ good.title }}</h3>
+              <p class="promo__text">{{ good.text }}</p>
 
-            <p class="promo__price">
-              <del class="promo__del">{{ good.oldPrice }}₽</del>
-              <ins class="promo__ins">{{ good.price }}₽</ins>
+              <p class="promo__price">
+                <del class="promo__del">{{ good.oldPrice }}₽</del>
+                <ins class="promo__ins">{{ good.price }}₽</ins>
 
-              <a class="promo__button" href="#!">Заказать</a>
-            </p>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
+                <a class="promo__button" href="#!">Заказать</a>
+              </p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <p class="slider__pagination"></p>
+
+    <button class="slider__control slider__control--prev" type="button">
+      <span class="visually-hidden">Предыдущий слайд.</span>
+    </button>
+    <button class="slider__control slider__control--next" type="button">
+      <span class="visually-hidden">Следующий слайд.</span>
+    </button>
   </div>
 </section>

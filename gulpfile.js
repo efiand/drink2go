@@ -1,6 +1,7 @@
 import autoprefixer from "autoprefixer";
 import bemValidator from "gulp-html-bem-validator";
 import browser from "browser-sync";
+import { createGulpEsbuild } from "gulp-esbuild";
 import cssnano from "cssnano";
 import del from "del";
 import eslint from "gulp-eslint";
@@ -18,7 +19,7 @@ import postcssBemLinter from "postcss-bem-linter";
 import postcssReporter from "postcss-reporter";
 import posthtml from "gulp-posthtml";
 import rename from "gulp-rename";
-import stackSprite from "gulp-svg-sprite";
+import { stacksvg } from "gulp-stacksvg";
 import stylelint from "stylelint";
 import svgo from "imagemin-svgo";
 import svgoConfig from "./svgo.config.js";
@@ -26,6 +27,7 @@ import webp from "gulp-webp";
 
 const IS_DEV = process.env.NODE_ENV === "development";
 const { src, dest, watch, series, parallel } = gulp;
+
 const checkLintspaces = () =>
   lintspaces({
     editorconfig: ".editorconfig"
@@ -34,6 +36,10 @@ const reportLintspaces = () =>
   lintspaces.reporter({
     breakOnWarning: !IS_DEV
   });
+const esBuild = createGulpEsbuild({
+  pipe: true
+});
+
 const editorconfigSources = [
   "source/njk/**/*.njk",
   "*.json",
@@ -41,12 +47,13 @@ const editorconfigSources = [
   "source/static/**/*.svg",
   "source/sprite/**/*.svg"
 ];
-const jsSources = ["source/static/js/**/*.js", "*.js"];
+const jeEntries = ["source/js/*.js"];
+const jsSources = ["source/js/**/*.js", "*.js"];
 const staticSources = ["source/static/**/*", "!source/static/**/*.md", "!source/static/**/README"];
 
 if (!IS_DEV) {
+  jeEntries.push("!source/js/dev.js");
   staticSources.push("!source/static/pixelperfect/**/*");
-  staticSources.push("!source/static/js/dev.js");
 }
 
 export const testHTML = () =>
@@ -63,7 +70,7 @@ export const buildStyles = () =>
   src("source/less/*.less", { sourcemaps: IS_DEV })
     .pipe(less())
     .pipe(postcss([mqpacker(), autoprefixer(), cssnano({ preset: ["default", { cssDeclarationSorter: false }] })]))
-    .pipe(rename({ suffix: ".min" }))
+    .pipe(rename({ suffix: ".bundle" }))
     .pipe(dest("build/css", { sourcemaps: "." }));
 
 export const testStyles = () =>
@@ -85,6 +92,17 @@ export const testStyles = () =>
         }
       )
     );
+
+export const buildScripts = () =>
+  src(jeEntries, { sourcemaps: IS_DEV })
+    .pipe(
+      esBuild({
+        bundle: true,
+        minify: !IS_DEV
+      })
+    )
+    .pipe(rename({ suffix: ".bundle" }))
+    .pipe(dest("build/js", { sourcemaps: "." }));
 
 export const testScripts = () =>
   src(jsSources)
@@ -108,8 +126,7 @@ export const optimizeImages = () =>
 export const buildSprite = () =>
   src("source/sprite/**/*.svg")
     .pipe(gulpIf(!IS_DEV, imagemin([svgo(svgoConfig)])))
-    .pipe(stackSprite({ mode: { stack: true } }))
-    .pipe(rename("sprite.svg"))
+    .pipe(stacksvg({ output: "sprite" }))
     .pipe(dest("build/img"));
 
 const server = (done) => {
@@ -140,10 +157,13 @@ const watcher = () => {
   watch("source/img/**/*.{jpg,png,svg}", series(optimizeImages, reload));
   watch("source/sprite/**/*.svg", series(buildSprite, reload));
   watch(staticSources, series(copyStatic, reload));
-  watch(jsSources, series(testScripts, reload));
+  watch(jsSources, series(testScripts, buildScripts, reload));
 };
 
-const compilationTasks = [cleanDestination, parallel(buildHTML, buildStyles, buildSprite, optimizeImages, copyStatic)];
+const compilationTasks = [
+  cleanDestination,
+  parallel(buildHTML, buildStyles, buildScripts, buildSprite, optimizeImages, copyStatic)
+];
 if (!IS_DEV) {
   compilationTasks.push(cleanDestinationAfter);
 }

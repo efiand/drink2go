@@ -126,7 +126,7 @@
     @media @mobile {
       &::before {
         content: "";
-        mask-image: url("../img/sprite.svg#menu");
+        mask: url("../img/sprite.svg#menu") no-repeat center / 100%;
       }
 
       &[aria-expanded="false"] {
@@ -143,12 +143,12 @@
 
   &--profile::before {
     content: "";
-    mask-image: url("../img/sprite.svg#profile");
+    mask: url("../img/sprite.svg#profile") no-repeat center / 100%;
   }
 
   &--cart::before {
     content: "";
-    mask-image: url("../img/sprite.svg#cart");
+    mask: url("../img/sprite.svg#cart") no-repeat center / 100%;
   }
 }
 
