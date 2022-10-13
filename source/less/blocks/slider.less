@@ -5,6 +5,10 @@
 
 .slider__body {
   overflow: hidden;
+
+  @media @tablet {
+    padding-bottom: 248px;
+  }
 }
 
 .slider__list {
@@ -30,6 +34,10 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  @media @tablet {
+    bottom: 248px;
+  }
 
   @media @tablet-desktop {
     width: 80px;
@@ -73,7 +81,7 @@
 .slider__pagination {
   position: absolute;
   right: 0;
-  bottom: 40px;
+  bottom: 66px;
   left: 0;
   display: none;
   flex-wrap: wrap;
@@ -91,7 +99,7 @@
   display: block;
   width: 62px;
   height: 4px;
-  margin: 8px;
+  margin: 4px;
   background-color: var(--color-base-white);
   border: none;
   cursor: pointer;

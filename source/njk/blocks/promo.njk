@@ -6,9 +6,17 @@
       <ul class="slider__list">
         {% for good in data.promo %}
           <li class="slider__item promo__card" style="--color: var(--color-{{ good.id }})">
-            <picture>
-              <source type="image/webp" srcset="img/promo-{{ loop.index }}.webp">
-              <img class="promo__image" src="img/promo-{{ loop.index }}.png" alt="Изображение товара «{{ good.title }}».">
+            <picture class="promo__picture">
+              <source
+                type="image/webp"
+                srcset="img/promo-{{ loop.index }}.webp 1x, img/promo-{{ loop.index }}@2x.webp 2x"
+              />
+              <img
+                class="promo__image"
+                src="img/promo-{{ loop.index }}.png"
+                srcset="img/promo-{{ loop.index }}@2x.png 2x"
+                alt="Изображение товара «{{ good.title }}»."
+              />
             </picture>
 
             <div class="promo__content">

@@ -1,30 +1,45 @@
-.promo__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 .promo__card {
+  display: grid;
+  gap: 10px;
   box-sizing: border-box;
   padding: 20px 20px 60px;
   background-color: var(--color);
 
   @media @tablet-desktop {
+    gap: 20px;
     padding: 60px 80px;
   }
 
   @media @desktop {
+    align-items: center;
+    grid-template-columns: 600px 1fr;
+    gap: 30px;
     padding: 30px calc(50% - 615px) 84px;
+  }
+}
+
+.promo__picture {
+  display: block;
+
+  @media @tablet {
+    order: 2;
+    height: 228px;
   }
 }
 
 .promo__image {
   display: block;
-  margin: 0 auto 10px;
+  margin: 0 auto;
+
+  @media @tablet {
+    max-width: 476px;
+  }
 }
 
 .promo__content {
-  text-align: center;
+  @media @mobile-tablet {
+    text-align: center;
+  }
 }
 
 .promo__tip {
@@ -43,17 +58,35 @@
   font-size: 36px;
   line-height: 48px;
   letter-spacing: 0.02em;
+
+  @media @tablet-desktop {
+    margin-bottom: 16px;
+    font-size: 56px;
+    line-height: 80px;
+  }
 }
 
 .promo__text {
   margin: 0;
+
+  @media @tablet-desktop {
+    font-size: 20px;
+    line-height: 32px;
+  }
 }
 
 .promo__price {
   display: flex;
-  justify-content: center;
   align-items: center;
   margin: 20px 0 0;
+
+  @media @mobile-tablet {
+    justify-content: center;
+  }
+
+  @media @desktop {
+    margin: 40px 0 8px;
+  }
 }
 
 .promo__del {

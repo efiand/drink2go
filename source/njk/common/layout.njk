@@ -10,6 +10,7 @@
     <link href="fonts/montserrat-regular.woff2" rel="preload" as="font" crossorigin="anonymous">
     <link href="fonts/montserrat-medium.woff2" rel="preload" as="font" crossorigin="anonymous">
     <link href="fonts/montserrat-bold.woff2" rel="preload" as="font" crossorigin="anonymous">
+    <link href="css/leaflet.min.css" rel="stylesheet">
     <link href="css/style.bundle.css{{ ver if ver}}" rel="stylesheet">
 
     <link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
@@ -30,8 +31,8 @@
     <footer></footer>
 
     {% if IS_DEV %}
-      <script src="js/dev.bundle.js"></script>
+      <script src="js/dev.bundle.js{{ ver if ver}}"></script>
     {% endif %}
-    <script src="js/script.bundle.js"></script>
+    <script src="js/script.bundle.js{{ ver if ver}}"></script>
   </body>
 </html>
