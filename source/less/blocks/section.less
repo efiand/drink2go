@@ -1,0 +1,39 @@
+.section {
+  padding: 50px 20px 44px;
+
+  @media @tablet {
+    padding: 60px 20px 90px;
+  }
+
+  @media @desktop {
+    padding: 90px calc(50% - 680px) 120px;
+  }
+
+  &--bg {
+    background-color: var(--color-lightest-grey);
+  }
+}
+
+.section__tip {
+  .tip();
+
+  margin: 0 0 4px;
+  text-align: center;
+}
+
+.section__heading {
+  margin: 0 0 20px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.5;
+  text-align: center;
+
+  @media @tablet-desktop {
+    font-size: 42px;
+    line-height: 64px;
+  }
+
+  @media @desktop {
+    margin-bottom: 40px;
+  }
+}
