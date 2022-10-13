@@ -6,18 +6,22 @@
   }
 
   @media @desktop {
-    padding: 90px calc(50% - 680px) 120px;
+    padding: 100px calc(50% - 680px) 110px;
   }
 
   &--bg {
     background-color: var(--color-lightest-grey);
+
+    @media @tablet {
+      padding-top: 80px;
+    }
   }
 }
 
 .section__tip {
   .tip();
 
-  margin: 0 0 4px;
+  margin: 0 0 5px;
   text-align: center;
 }
 
