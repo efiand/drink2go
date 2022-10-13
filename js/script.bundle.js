@@ -2,4 +2,4 @@
           <button class="${d}" type="button">
             <span class="visually-hidden">Слайд № ${r+1}</span>
           </button>
-        `}},slideClass:"slider__item",wrapperClass:"slider__list",...t})};var fa=()=>{let e=document.querySelector(".page-header__nav"),t=e.querySelector(".page-header__link--hamburger");t.addEventListener("click",()=>{let a=t.getAttribute("aria-expanded");t.setAttribute("aria-expanded",a==="true"?"false":"true")}),e.classList.remove("page-header__nav--initial")};fa();da(document.querySelector(".slider"));})();
+        `}},slideClass:"slider__item",wrapperClass:"slider__list",...t}),e.classList.remove("slider--no-js")};var fa=()=>{let e=document.querySelector(".page-header__nav"),t=e.querySelector(".page-header__link--hamburger");t.addEventListener("click",()=>{let a=t.getAttribute("aria-expanded");t.setAttribute("aria-expanded",a==="true"?"false":"true")}),e.classList.remove("page-header__nav--initial")};fa();da(document.querySelector(".slider"));})();
