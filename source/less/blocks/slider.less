@@ -86,6 +86,8 @@
 }
 
 .slider__pagination-button {
+  .transition("background-color");
+
   display: block;
   width: 62px;
   height: 4px;
@@ -93,9 +95,19 @@
   background-color: var(--color-base-white);
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
 
   &--active {
     background-color: var(--color-base-primary);
+  }
+}
+
+.slider--no-js {
+  .slider__list {
+    display: block;
+  }
+
+  .slider__control,
+  .slider__pagination {
+    display: none;
   }
 }

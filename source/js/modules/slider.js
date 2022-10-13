@@ -35,4 +35,6 @@ export default (sliderElement = null, options = {}) => {
     wrapperClass: "slider__list",
     ...options
   });
+
+  sliderElement.classList.remove("slider--no-js");
 };
