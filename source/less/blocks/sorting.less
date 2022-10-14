@@ -1,0 +1,138 @@
+.sorting {
+  position: relative;
+  display: flex;
+
+  &--no-js {
+    .sorting__chosen {
+      display: none;
+    }
+
+    .sorting__options {
+      position: static;
+      display: block;
+    }
+  }
+}
+
+.sorting__label {
+  margin: 4px 8px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+
+  @media @tablet-desktop {
+    margin-right: 12px;
+  }
+}
+
+.sorting__chosen {
+  .transition("background-color");
+
+  position: relative;
+  padding: 4px 28px 4px 10px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: inherit;
+  color: var(--color-base-primary);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  @media @tablet-desktop {
+    padding-right: 30px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-base-secondary);
+  }
+
+  &::before {
+    .transition("transform");
+    .mask("arrow-down");
+
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 7px;
+    width: 10px;
+    height: 6px;
+    background-color: currentColor;
+
+    @media @tablet-desktop {
+      right: 10px;
+    }
+  }
+
+  &--opened {
+    &::before {
+      transform: scaleY(-1);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+
+    + .sorting__options {
+      display: block;
+    }
+  }
+}
+
+.sorting__options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  display: none;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  background-color: var(--color-base-white);
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sorting__option {
+  border-bottom: 1px solid var(--color-base-secondary);
+
+  &:first-child {
+    .sorting__choose {
+      border-radius: 4px 4px 0 0;
+    }
+  }
+
+  &:last-child {
+    border-bottom: none;
+
+    .sorting__choose {
+      border-radius: 0 0 4px 4px;
+    }
+  }
+}
+
+.sorting__choose {
+  .transition("background-color");
+
+  width: 100%;
+  padding: 9px 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: inherit;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-base-secondary);
+  }
+
+  &.sorting__choose--chosen {
+    color: var(--color-base-white);
+    background-color: var(--color-base-primary);
+  }
+}

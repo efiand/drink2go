@@ -85,6 +85,25 @@
   </div>
 
   <div class="catalog__body">
-
+    <div class="catalog__sorting sorting sorting--no-js">
+      <p class="sorting__label">Сортировка:</p>
+      <button class="sorting__chosen" type="button">
+        по умолчанию
+      </button>
+      <ul class="sorting__options">
+        <li class="sorting__option">
+          <button class="sorting__choose sorting__choose--chosen" type="submit" name="sorting" value="default">по умолчанию</button>
+        </li>
+        <li class="sorting__option">
+          <button class="sorting__choose" type="submit" name="sorting" value="price-down">сначала дорогие</button>
+        </li>
+        <li class="sorting__option">
+          <button class="sorting__choose" type="submit" name="sorting" value="price-up">сначала дешёвые</button>
+        </li>
+        <li class="sorting__option">
+          <button class="sorting__choose" type="submit" name="sorting" value="rating">высокий рейтинг</button>
+        </li>
+      </ul>
+    </p>
   </div>
 </form>
