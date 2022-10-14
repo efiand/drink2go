@@ -1,0 +1,83 @@
+.checker {
+  display: flex;
+  align-items: center;
+}
+
+.checker__input {
+  .transition();
+
+  margin: 0 10px 0 0;
+  color: var(--color-base-grey);
+  background-color: currentColor;
+  border: 2px solid;
+  border-radius: 12px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+
+  &::before {
+    .transition("margin-left, background-color");
+
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-base-white);
+    border: 2px solid var(--color-base-white);
+    border-radius: 50%;
+  }
+
+  &:hover:not(:disabled),
+  &:focus {
+    color: var(--color-primary-lighter);
+    background-color: var(--color-primary-opacity);
+  }
+
+  &:checked:not(:disabled) {
+    color: var(--color-base-primary);
+    background-color: currentColor;
+  }
+
+  &:disabled {
+    color: var(--color-light-grey);
+    cursor: not-allowed;
+
+    + .checker__label {
+      color: var(--color-base-grey);
+      cursor: not-allowed;
+    }
+  }
+
+  &--checkbox {
+    width: 42px;
+
+    &:checked::before {
+      margin-left: 18px;
+    }
+
+    &:checked:disabled::before {
+      background-color: var(--color-base-grey);
+      border-color: var(--color-base-grey);
+    }
+  }
+
+  &--radio {
+    width: 24px;
+
+    &:checked::before {
+      background-color: currentColor;
+    }
+
+    &:hover:not(:disabled)::before,
+    &:focus::before {
+      background-color: var(--color-primary-opacity);
+    }
+  }
+}
+
+.checker__label {
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}

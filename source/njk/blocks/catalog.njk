@@ -1,31 +1,33 @@
 <form class="catalog" action="https://echo.htmlacademy.ru">
   <div class="filters">
-    <fieldset class="filters__set">
+    <fieldset class="filters__set filters__set--range">
       <legend class="filters__title">Цена</legend>
 
       <div class="range">
         <div class="range__target range__target--no-js"></div>
 
         <p class="range__fields">
-          <label>
+          <label class="range__label">
+            <span class="visually-hidden">От:</span>
             <input
-              class="field"
+              class="range__field field"
               name="price_from"
               type="number"
               min="0"
-              max="1000"
-              step="50"
+              max="980"
+              step="10"
               placeholder="0"
             />
           </label>
-          <label>
+          <label class="range__label">
+            <span class="visually-hidden">До:</span>
             <input
-              class="field"
+              class="range__field field"
               name="price_to"
               type="number"
               min="0"
-              max="1000"
-              step="50"
+              max="980"
+              step="10"
               value="900"
               placeholder="1000"
             />
@@ -46,6 +48,7 @@
               name="milk"
               type="radio"
               value="{{ item.value }}"
+              {{ 'checked' if item.checked }}
               {{ 'disabled' if item.disabled }}
             />
             <label class="checker__label" for="milk-{{ loop.index }}">{{ item.label }}</label>
@@ -59,7 +62,7 @@
 
       <ul class="filters__list">
         {% for item in data.countries %}
-          <li class="filters__checker filters__checker--checkboxes checker">
+          <li class="filters__checker filters__checker--checkbox checker">
             <input
               class="checker__input checker__input--checkbox"
               id="country-{{ loop.index }}"
@@ -76,8 +79,8 @@
     </fieldset>
 
     <p class="filters__buttons">
-      <button class="filters__submit" type="submit">Применить фильтр</button>
-      <button class="filters__reset" type="reset">Сбросить фильтр</button>
+      <button class="filters__button filters__button--submit" type="submit">Применить фильтр</button>
+      <button class="filters__button filters__button--reset" type="reset">Сбросить фильтр</button>
     </p>
   </div>
 

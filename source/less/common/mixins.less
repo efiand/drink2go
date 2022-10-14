@@ -24,11 +24,11 @@
   margin-left: auto;
 }
 
-.button() {
+.button(@padding: "8px 20px") {
   .transition();
 
   box-sizing: border-box;
-  padding: 8px 20px;
+  padding: ~"@{padding}";
   font-family: inherit;
   text-align: center;
   text-decoration: none;
@@ -37,8 +37,8 @@
   outline: none;
 }
 
-.button-primary() {
-  .button();
+.button-primary(@padding: "8px 20px") {
+  .button(@padding);
 
   color: var(--color-base-white);
   background-color: var(--color-base-primary);
@@ -57,8 +57,8 @@
   }
 }
 
-.button-secondary() {
-  .button();
+.button-secondary(@padding: "8px 20px") {
+  .button(@padding);
 
   color: var(--color-base-primary);
   background-color: var(--color-base-white);
