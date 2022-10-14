@@ -2,7 +2,7 @@ import noUiSlider from "nouislider";
 
 export default (containerElement = null) => {
   if (!containerElement) {
-    return;
+    return () => null;
   }
 
   const rangeElement = containerElement.querySelector(".range__target");
@@ -44,6 +44,17 @@ export default (containerElement = null) => {
   toFieldElement.addEventListener("change", handleChange);
 
   rangeElement.classList.remove("range__target--no-js");
+
+  const [fromOriginElement, toOriginElement] = rangeElement.querySelectorAll(".range__origin");
+  if (fromFieldElement.disabled) {
+    fromOriginElement.setAttribute("disabled", true);
+  }
+  if (toFieldElement.disabled) {
+    toOriginElement.setAttribute("disabled", true);
+  }
+  if (fromFieldElement.disabled && toFieldElement.disabled) {
+    rangeElement.classList.add("range__target--disabled");
+  }
 
   return () => rangeElement.noUiSlider.set(start);
 };

@@ -7,6 +7,12 @@
   &--no-js {
     display: none;
   }
+
+  &--disabled {
+    .range__connect {
+      background-color: var(--color-base-grey);
+    }
+  }
 }
 
 .range__base {
@@ -45,6 +51,17 @@
 .range__origin {
   top: 0;
   left: 100%;
+
+  &[disabled] {
+    .range__handle {
+      border-color: var(--color-base-grey);
+      cursor: not-allowed;
+    }
+
+    .range__handle::before {
+      background-color: transparent;
+    }
+  }
 }
 
 .range__handle {
@@ -56,6 +73,7 @@
   background-color: var(--color-base-white);
   border: 2px solid var(--color-base-primary);
   border-radius: 50%;
+  outline: none;
   cursor: pointer;
 
   &::before {
@@ -86,18 +104,4 @@
 
 .range__touch-area {
   height: 100%;
-}
-
-.range--disabled {
-  .range__connect {
-    background-color: var(--color-base-grey);
-  }
-
-  .range__handle {
-    border-color: var(--color-base-grey);
-
-    &::before {
-      background-color: transparent;
-    }
-  }
 }
