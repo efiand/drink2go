@@ -5,6 +5,10 @@
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
 
+  @media @tablet-desktop {
+    margin-bottom: 22px;
+  }
+
   &--no-js {
     display: none;
   }
@@ -129,8 +133,20 @@
 
 .range__label {
   width: calc(50% - 22px);
+
+  @media @tablet-desktop {
+    width: calc(50% - 17px);
+  }
+
+  @media @desktop {
+    width: calc(50% - 25px);
+  }
 }
 
 .range__field {
   width: 100%;
+
+  @media @tablet-desktop {
+    min-height: 40px;
+  }
 }

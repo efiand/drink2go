@@ -1,4 +1,6 @@
 .field {
+  .transition("border-color");
+
   box-sizing: border-box;
   padding: 5px 10px;
   font-weight: 500;
@@ -6,8 +8,19 @@
   line-height: 1.5;
   font-family: inherit;
   text-align: center;
+  color: inherit;
   border: 2px solid var(--color-primary-lighter);
   border-radius: 4px;
+  outline: none;
+
+  &:focus {
+    border-color: var(--color-primary-darker);
+  }
+
+  &:disabled {
+    color: var(--color-base-grey);
+    border-color: var(--color-light-grey);
+  }
 
   &[type="number"] {
     appearance: textfield;

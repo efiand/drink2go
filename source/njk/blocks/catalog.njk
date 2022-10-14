@@ -3,7 +3,7 @@
     <fieldset class="filters__set filters__set--range">
       <legend class="filters__title">Цена</legend>
 
-      <div class="range">
+      <div class="filters__range range">
         <div class="range__target range__target--no-js"></div>
 
         <p class="range__fields">
@@ -14,7 +14,7 @@
               name="price_from"
               type="number"
               min="0"
-              max="980"
+              max="1000"
               step="10"
               placeholder="0"
             />
@@ -26,7 +26,7 @@
               name="price_to"
               type="number"
               min="0"
-              max="980"
+              max="1000"
               step="10"
               value="900"
               placeholder="1000"
@@ -41,7 +41,7 @@
 
       <ul class="filters__list">
         {% for item in data.milkOptions %}
-          <li class="filters__checker checker">
+          <li class="filters__checker filters__checker--radio checker">
             <input
               class="checker__input checker__input--radio"
               id="milk-{{ loop.index }}"
