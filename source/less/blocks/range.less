@@ -1,23 +1,26 @@
 .range__target {
-  width: 100%;
-  margin-top: 20px;
-  padding-right: 20px;
+  padding-right: 24px;
+  overflow: hidden;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
+
+  &--no-js {
+    display: none;
+  }
 }
 
 .range__base {
   position: relative;
-  height: 20px;
+  height: 24px;
 
   &::before {
     content: "";
     position: absolute;
-    top: 8px;
-    right: -20px;
-    bottom: 8px;
+    top: 11px;
+    right: -24px;
+    bottom: 11px;
     left: 0;
-    background-color: currentColor;
+    background-color: var(--color-light-grey);
     opacity: 0.3;
   }
 }
@@ -33,10 +36,10 @@
 }
 
 .range__connect {
-  top: 8px;
+  top: 10px;
   right: 0;
   height: 4px;
-  background-color: currentColor;
+  background-color: var(--color-base-primary);
 }
 
 .range__origin {
@@ -50,25 +53,51 @@
   left: 0;
   width: 20px;
   height: 20px;
-  background-color: currentColor;
-  border-radius: 5px;
+  background-color: var(--color-base-white);
+  border: 2px solid var(--color-base-primary);
+  border-radius: 50%;
   cursor: pointer;
 
-  &:hover {
-    box-shadow: 0 4px 10px var(--color-base-25);
+  &::before {
+    .transition("background-color");
+
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
   }
 
+  &:hover,
   &:focus {
-    outline: var(--focus-outline);
-    box-shadow: 0 4px 10px var(--color-base-25);
+    &::before {
+      background-color: var(--color-primary-opacity);
+    }
   }
 
   &:active {
-    outline: 2px solid var(--color-cold-lite);
-    box-shadow: 0 7px 15px var(--color-base-40);
+    &::before {
+      background-color: var(--color-base-primary);
+    }
   }
 }
 
 .range__touch-area {
   height: 100%;
+}
+
+.range--disabled {
+  .range__connect {
+    background-color: var(--color-base-grey);
+  }
+
+  .range__handle {
+    border-color: var(--color-base-grey);
+
+    &::before {
+      background-color: transparent;
+    }
+  }
 }

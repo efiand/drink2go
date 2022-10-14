@@ -4,7 +4,7 @@
       <legend class="filters__title">Цена</legend>
 
       <div class="range">
-        <div class="range__target"></div>
+        <div class="range__target range__target--no-js"></div>
 
         <p class="range__fields">
           <label>
@@ -36,10 +36,43 @@
 
     <fieldset class="filters__set">
       <legend class="filters__title">Наличие молока</legend>
+
+      <ul class="filters__list">
+        {% for item in data.milkOptions %}
+          <li class="filters__checker checker">
+            <input
+              class="checker__input checker__input--radio"
+              id="milk-{{ loop.index }}"
+              name="milk"
+              type="radio"
+              value="{{ item.value }}"
+              {{ 'disabled' if item.disabled }}
+            />
+            <label class="checker__label" for="milk-{{ loop.index }}">{{ item.label }}</label>
+          </li>
+        {% endfor %}
+      </ul>
     </fieldset>
 
     <fieldset class="filters__set">
       <legend class="filters__title">Страна произрастания</legend>
+
+      <ul class="filters__list">
+        {% for item in data.countries %}
+          <li class="filters__checker filters__checker--checkboxes checker">
+            <input
+              class="checker__input checker__input--checkbox"
+              id="country-{{ loop.index }}"
+              name="countries[]"
+              type="checkbox"
+              value="{{ item.value }}"
+              {{ 'checked' if item.checked }}
+              {{ 'disabled' if item.disabled }}
+            />
+            <label class="checker__label" for="country-{{ loop.index }}">{{ item.label }}</label>
+          </li>
+        {% endfor %}
+      </ul>
     </fieldset>
 
     <p class="filters__buttons">

@@ -1,6 +1,10 @@
-import createSlider from "./modules/slider.js";
+import initCatalog from "./modules/catalog.js";
 import initMenu from "./modules/menu.js";
+import initRange from "./modules/range.js";
+import initSlider from "./modules/slider.js";
 
 initMenu();
 
-createSlider(document.querySelector(".slider"));
+initSlider(document.querySelector(".slider"));
+
+initCatalog(document.querySelector(".catalog"), initRange(document.querySelector(".range")));
