@@ -1,0 +1,22 @@
+<article class="good">
+  <picture class="good__picture">
+    <source
+      type="image/webp"
+      srcset="img/{{ good.id }}.webp 1x, img/{{ good.id }}@2x.webp 2x"
+    />
+    <img
+      class="good__image"
+      src="img/{{ good.id }}.png"
+      srcset="img/{{ good.id }}@2x.png 2x"
+      alt="Изображение товара «{{ good.title }}»."
+    />
+  </picture>
+
+  <h3 class="good__title">{{ good.title }}</h3>
+  <p class="good__text">{{ good.text }}</p>
+
+  <footer class="good__footer">
+    <p class="good__price">{{ good.price }}₽</p>
+    <a class="good__button" href="#!">В корзину</a>
+  </footer>
+</article>

@@ -1,88 +1,5 @@
 <form class="catalog" action="https://echo.htmlacademy.ru">
-  <div class="filters">
-    <fieldset class="filters__set filters__set--range">
-      <legend class="filters__title">Цена</legend>
-
-      <div class="filters__range range">
-        <div class="range__target range__target--no-js"></div>
-
-        <p class="range__fields">
-          <label class="range__label">
-            <span class="visually-hidden">От:</span>
-            <input
-              class="range__field field"
-              name="price_from"
-              type="number"
-              min="0"
-              max="1000"
-              step="10"
-              placeholder="0"
-            />
-          </label>
-          <label class="range__label">
-            <span class="visually-hidden">До:</span>
-            <input
-              class="range__field field"
-              name="price_to"
-              type="number"
-              min="0"
-              max="1000"
-              step="10"
-              value="900"
-              placeholder="1000"
-            />
-          </label>
-        </p>
-      </div>
-    </fieldset>
-
-    <fieldset class="filters__set">
-      <legend class="filters__title">Наличие молока</legend>
-
-      <ul class="filters__list">
-        {% for item in data.milkOptions %}
-          <li class="filters__checker filters__checker--radio checker">
-            <input
-              class="checker__input checker__input--radio"
-              id="milk-{{ loop.index }}"
-              name="milk"
-              type="radio"
-              value="{{ item.value }}"
-              {{ 'checked' if item.checked }}
-              {{ 'disabled' if item.disabled }}
-            />
-            <label class="checker__label" for="milk-{{ loop.index }}">{{ item.label }}</label>
-          </li>
-        {% endfor %}
-      </ul>
-    </fieldset>
-
-    <fieldset class="filters__set">
-      <legend class="filters__title">Страна произрастания</legend>
-
-      <ul class="filters__list">
-        {% for item in data.countries %}
-          <li class="filters__checker filters__checker--checkbox checker">
-            <input
-              class="checker__input checker__input--checkbox"
-              id="country-{{ loop.index }}"
-              name="countries[]"
-              type="checkbox"
-              value="{{ item.value }}"
-              {{ 'checked' if item.checked }}
-              {{ 'disabled' if item.disabled }}
-            />
-            <label class="checker__label" for="country-{{ loop.index }}">{{ item.label }}</label>
-          </li>
-        {% endfor %}
-      </ul>
-    </fieldset>
-
-    <p class="filters__buttons">
-      <button class="filters__button filters__button--submit" type="submit">Применить фильтр</button>
-      <button class="filters__button filters__button--reset" type="reset">Сбросить фильтр</button>
-    </p>
-  </div>
+  {% include 'blocks/filters.njk' %}
 
   <div class="catalog__body">
     <div class="catalog__sorting sorting sorting--no-js">
@@ -104,6 +21,14 @@
           <button class="sorting__choose" type="submit" name="sorting" value="rating">высокий рейтинг</button>
         </li>
       </ul>
-    </p>
+    </div>
+
+    <ul class="catalog__list">
+      {% for good in data.goods %}
+        <li class="catalog__item">
+          {% include 'blocks/good.njk' %}
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 </form>
