@@ -1,0 +1,19 @@
+.map {
+  .adaptive-bg("map");
+
+  min-height: 420px;
+  background-color: var(--color-base-grey);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: auto 540px;
+
+  @media @tablet-desktop {
+    min-height: 480px;
+    background-position: 50% -30px;
+  }
+
+  @media @desktop {
+    min-height: 540px;
+    background-position: 50% 0;
+  }
+}

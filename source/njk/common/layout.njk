@@ -28,7 +28,7 @@
       {% block main %}Страница в разработке.{% endblock %}
     </main>
 
-    <footer></footer>
+    {% include 'blocks/page-footer.njk' %}
 
     {% if IS_DEV %}
       <script src="js/dev.bundle.js{{ ver if ver}}"></script>
