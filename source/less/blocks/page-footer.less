@@ -1,0 +1,22 @@
+.page-footer {
+  .container();
+
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: auto, 1fr;
+}
+
+.page-footer__logo {
+  margin: 0;
+
+  img {
+    display: block;
+    max-width: none;
+  }
+}
+
+.page-footer__description {
+  @media @mobile-tablet {
+    display: none;
+  }
+}

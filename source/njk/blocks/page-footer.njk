@@ -1,1 +1,87 @@
-<footer class="page-footer"></footer>
+<footer class="page-footer">
+  <figure class="page-footer__logo">
+    <picture>
+      <source media="(min-width: 1440px)" srcset="img/logo.svg">
+      <img src="img/logo-tablet.svg" alt="Логотип Dring2Go.">
+    </picture>
+    <figcaption class="page-footer__description">
+      Интернет-магазин кофейных напитков
+    </figcaption>
+  </figure>
+
+  <ul class="page-footer__socials">
+    {% for link in [
+      {
+        id: 'vk',
+        title: 'Мы в VK.'
+      },
+      {
+        id: 'pinterest',
+        title: 'Мы в Pinterest.'
+      },
+      {
+        id: '',
+        title: 'Мы в Одноклассниках.'
+      }
+    ] %}
+      <li class="page-footer__socials-item">
+        <a class="page-footer__socials-link page-footer__socials-link--{{ link.id }}" href="#!">
+          {{ link.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2 class="visually-hidden">Ссылки.</h2>
+  <nav class="page-footer__nav">
+    {% for linkGroup in [
+      {
+        title: 'Интернет-магазин',
+        links: ['Каталог', 'Доставка', 'Способы оплаты', 'О нас']
+      },
+      {
+        title: 'Медиа',
+        links: ['Блог', 'Информация для СМИ', 'Правовая информация']
+      }
+    ] %}
+      <div class="page-footer__item">
+        <h3 class="page-footer__title">{{ linkGroup.title }}</h3>
+
+        <ul class="page-footer__links">
+          {% for link in linkGroup.links %}
+            <li class="page-footer__links-item">
+              <a class="page-footer__link" href="#!">{{ link }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </nav>
+
+  <div class="page-footer__item">
+    <h3 class="page-footer__title">Контакты</h3>
+
+    <ul class="page-footer__links">
+      <li class="page-footer__links-item">
+        <a class="page-footer__link page-footer__link--address" href="#!">
+          Санкт-Петербург, набережная реки Карповки, дом 5
+        </a>
+      </li>
+      <li class="page-footer__links-item">
+        <a class="page-footer__link page-footer__link--tel" href="tel:+79999999999">
+          +7 (999) 999-99-99
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <p class="page-footer__dev">
+    Разработано в
+    <a class="page-footer__dev-link" href="https://htmlacademy.ru">
+      HTML Academy
+      <svg class="page-footer__dev-logo" width="12" height="16">
+        <use xlink:href="img/htmlacademy.svg#htmlacademy" />
+      </svg>
+    </a>
+  </p>
+</footer>

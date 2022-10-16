@@ -10,8 +10,7 @@ export default {
       "removeDesc",
       "removeTitle",
       "removeUselessDefs",
-      "removeEmptyAttrs",
-      "cleanupIDs"
+      "removeEmptyAttrs"
     ].map((name) => ({
       active: true,
       name

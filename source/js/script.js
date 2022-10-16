@@ -1,4 +1,4 @@
-import initCatalog from "./modules/catalog.js";
+import initForm from "./modules/form.js";
 import initMap from "./modules/map.js";
 import initMenu from "./modules/menu.js";
 import initRange from "./modules/range.js";
@@ -9,7 +9,7 @@ initMenu();
 
 initSlider(document.querySelector(".slider"));
 
-initCatalog(document.querySelector(".catalog"), initRange(document.querySelector(".range")));
+initForm(document.querySelector(".catalog"), initRange(document.querySelector(".range")));
 
 initSorting(document.querySelector(".sorting"));
 

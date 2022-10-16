@@ -25,7 +25,9 @@
     {% include 'blocks/page-header.njk' %}
 
     <main>
-      {% block main %}Страница в разработке.{% endblock %}
+      {% block main %}{% endblock %}
+
+      <div class="map" id="map"></div>
     </main>
 
     {% include 'blocks/page-footer.njk' %}

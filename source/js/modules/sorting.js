@@ -1,4 +1,8 @@
 export default (sortingElement) => {
+  if (!sortingElement) {
+    return;
+  }
+
   const chosenElement = sortingElement.querySelector(".sorting__chosen");
 
   chosenElement.addEventListener("click", () => {
