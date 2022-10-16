@@ -1,9 +1,17 @@
 .page-footer {
   .container();
+}
 
-  display: grid;
-  grid-auto-flow: dense;
-  grid-template-columns: auto, 1fr;
+.page-footer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--color-base-secondary);
+}
+
+.page-footer__socials {
+  margin: -20px 0 0;
 }
 
 .page-footer__logo {
@@ -19,4 +27,120 @@
   @media @mobile-tablet {
     display: none;
   }
+}
+
+.page-footer__item {
+  padding: 20px 20px 11px;
+  border-bottom: 1px solid var(--color-base-secondary);
+}
+
+.page-footer__heading {
+  margin: 0 0 17px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-base-primary);
+  letter-spacing: 0.02em;
+}
+
+.page-footer__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-footer__links-item {
+  margin-bottom: 16px;
+
+  &--contact:last-child {
+    margin: -3px 0 9px;
+  }
+}
+
+.page-footer__link,
+.page-footer__contact-link {
+  .transition("color");
+
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    color: var(--color-primary-lighter);
+  }
+
+  &:active {
+    color: var(--color-primary-darker);
+  }
+}
+
+.page-footer__link {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.page-footer__contact-link {
+  position: relative;
+  display: inline-block;
+  padding: 3px 20px 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: none;
+  letter-spacing: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 13px;
+    height: 16px;
+    background-color: var(--color-base-primary);
+  }
+
+  &--address::before {
+    .mask("address");
+  }
+
+  &--tel::before {
+    .mask("tel");
+  }
+}
+
+.page-footer__dev {
+  margin: 0;
+  padding: 20px 20px 30px;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: var(--color-base-grey);
+}
+
+.page-footer__dev-link {
+  .transition("color");
+
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    color: var(--color-base-primary);
+  }
+
+  &:active {
+    color: var(--color-primary-darker);
+  }
+}
+
+.page-footer__dev-logo {
+  flex-shrink: 0;
+  margin-left: 4px;
+  fill: currentColor;
 }

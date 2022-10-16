@@ -131,10 +131,14 @@
       &::before {
         content: "";
 
-        .mask("menu");
+        .mask("menu-close");
       }
 
       &[aria-expanded="false"] {
+        &::before {
+          .mask("menu");
+        }
+
         & + .page-header__nav-list {
           display: none;
         }
