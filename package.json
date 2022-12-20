@@ -1,7 +1,6 @@
 {
-  "name": "pink-25",
+  "name": "drink2go",
   "private": true,
-  "description": "drink2go",
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.0.0",
     "autoprefixer": "10.4.0",
